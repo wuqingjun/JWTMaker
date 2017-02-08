@@ -36,9 +36,11 @@
                 patient = patientId.Text,
                 scope = "patient/*.read",
                 aud = "urn:relayhealth.com",
-                exp = DateTime.Now.AddMinutes(8).ToUniversalTime(),
-                iat = DateTime.Now.ToUniversalTime()
+                exp = DateTime.Now.AddMinutes(8).ToUniversalTime().ToUnixTime(),
+                iat = DateTime.Now.ToUniversalTime().ToUnixTime()
             };
+
+            Console.WriteLine(payload);
             // Use private key to sign token
             var signingCert = new X509Certificate2(@"SigningCert.pfx", "relayhealth");
             var secretKey = signingCert.Export(X509ContentType.Cert);
@@ -65,8 +67,8 @@
                 {"patient", patientId.Text},
                 {"scope", "patient/*.read"},
                 {"aud", "urn:relayhealth.com"},
-                {"exp", DateTime.Now.AddMinutes(8).ToUniversalTime().ToString(CultureInfo.InvariantCulture)},
-                {"iat", DateTime.Now.ToUniversalTime().ToString(CultureInfo.InvariantCulture)}
+                {"exp", DateTime.Now.AddMinutes(8).ToUniversalTime().ToUnixTime()},
+                {"iat", DateTime.Now.ToUniversalTime().ToUnixTime()}
             };
             // Use private key to sign token
             var signingCert = new X509Certificate2(@"SigningCert.pfx", "relayhealth");

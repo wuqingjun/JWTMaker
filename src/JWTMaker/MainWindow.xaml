@@ -20,10 +20,10 @@
         <TextBox x:Name="userId" HorizontalAlignment="Left" Height="23" Margin="126,74,0,0" TextWrapping="Wrap" Text="User ID" VerticalAlignment="Top" Width="197"/>
         <TextBox x:Name="patientId" HorizontalAlignment="Left" Height="23" Margin="126,37,0,0" TextWrapping="Wrap" Text="Patient ID" VerticalAlignment="Top" Width="197"/>
         <Button x:Name="createTokenButton" Content="Generate ID Token" HorizontalAlignment="Left" Margin="449,36,0,0" VerticalAlignment="Top" Width="124" Click="createTokenButton_Click"/>
-        <TextBox x:Name="encodedTokenText" HorizontalAlignment="Left" Height="90" Margin="36,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="593"/>
+        <TextBox x:Name="encodedTokenText" HorizontalAlignment="Left" Height="90" Margin="36,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="593" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"/>
         <Label x:Name="label2" Content="Encoded Token" HorizontalAlignment="Left" Margin="36,107,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.538" Width="102"/>
-        <Label x:Name="label2_Copy" Content="Decoded Token" HorizontalAlignment="Left" Margin="36,228,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.538"/>
-        <TextBlock x:Name="decodedTokenText" HorizontalAlignment="Left" Margin="36,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="300" Width="603"/>
+        <Label x:Name="label2_Copy" Content="Decoded Token Payload" HorizontalAlignment="Left" Margin="36,228,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.538"/>
+        <TextBlock x:Name="decodedTokenText" HorizontalAlignment="Left" Margin="36,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="300" Width="603" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"/>
         <RadioButton x:Name="optionJose" Content="Jose Jwt&#xD;&#xA;" HorizontalAlignment="Left" Margin="449,68,0,0" VerticalAlignment="Top" Width="113" Height="21" GroupName="strategy" IsChecked="True"/>
         <RadioButton x:Name="optionCustom" Content="Custom" HorizontalAlignment="Left" Margin="449,95,0,0" VerticalAlignment="Top" Width="98" GroupName="strategy"/>
 
