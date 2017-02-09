@@ -34,7 +34,7 @@
                 iss = "urn:ascension.org",
                 sub = userId.Text,
                 patient = patientId.Text,
-                scope = "patient/*.read",
+                scope = "user/*.read",
                 aud = "urn:relayhealth.com",
                 exp = DateTime.Now.AddMinutes(8).ToUniversalTime().ToUnixTime(),
                 iat = DateTime.Now.ToUniversalTime().ToUnixTime()
@@ -65,7 +65,7 @@
                 {"iss", "urn:ascension.org"},
                 {"sub", userId.Text},
                 {"patient", patientId.Text},
-                {"scope", "patient/*.read"},
+                {"scope", "user/*.read"},
                 {"aud", "urn:relayhealth.com"},
                 {"exp", DateTime.Now.AddMinutes(8).ToUniversalTime().ToUnixTime()},
                 {"iat", DateTime.Now.ToUniversalTime().ToUnixTime()}
@@ -74,10 +74,11 @@
             var signingCert = new X509Certificate2(@"SigningCert.pfx", "relayhealth");
             var secretKey = signingCert.Export(X509ContentType.Cert);
 
+            // The encoded token is returned from the authorization server
             var encodedToken = JWT.Encode(payload, secretKey, JwsAlgorithm.HS256);
             encodedTokenText.Text = encodedToken;
 
-            // Now decode and validate with public kdey
+            // The consumer can validate with public dey
             var validatingCert = new X509Certificate2("ValidatingCert.cer");
             var validatingKey = validatingCert.Export(X509ContentType.Cert);
             var decodedToken = JWT.Decode(encodedToken, validatingKey);
